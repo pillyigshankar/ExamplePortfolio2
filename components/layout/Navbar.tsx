@@ -28,6 +28,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -60,7 +67,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 section-shell",
           scrolled
             ? "py-3"
             : "py-5"
@@ -70,7 +77,7 @@ export default function Navbar() {
           className={cn(
             "mx-auto max-w-6xl px-6 flex items-center justify-between rounded-2xl transition-all duration-500",
             scrolled
-              ? "glass-card shadow-md py-3 px-6 mx-4"
+              ? "glass-card shadow-md py-3 px-5"
               : "py-0"
           )}
           style={
@@ -98,7 +105,7 @@ export default function Navbar() {
               PG
             </div>
             <span
-              className="font-semibold text-base hidden sm:block"
+              className="font-semibold text-base hidden sm:block text-balance"
               style={{ color: "var(--text)" }}
             >
               Pillyi G Shankar
@@ -113,11 +120,11 @@ export default function Navbar() {
                 <button
                   key={href}
                   onClick={() => handleNavClick(href)}
-                  className={cn(
-                    "relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
-                    isActive
-                      ? "text-accent"
-                      : "hover:text-accent"
+                   className={cn(
+                     "relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 focus-ring",
+                     isActive
+                       ? "text-accent"
+                       : "hover:text-accent"
                   )}
                   style={{
                     color: isActive ? "var(--accent)" : "var(--text-muted)",
@@ -142,11 +149,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <motion.a
               href="mailto:pillyi.shankar@email.com"
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
+              className="btn-primary px-5 py-2.5 focus-ring"
               style={{
-                background: "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
                 color: "var(--bg)",
-                boxShadow: "var(--shadow-accent)",
               }}
               whileHover={{ scale: 1.04, boxShadow: "0 12px 40px rgba(176, 137, 104, 0.4)" }}
               whileTap={{ scale: 0.97 }}
@@ -157,10 +162,12 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className="md:hidden p-2 rounded-lg transition-colors"
+            className="md:hidden p-2 rounded-lg transition-colors focus-ring"
             style={{ color: "var(--text)" }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle mobile menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu-drawer"
             id="mobile-menu-toggle"
           >
             <motion.div
@@ -190,14 +197,15 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-72 z-50 flex flex-col p-8"
+              className="fixed top-0 right-0 bottom-0 w-[min(20rem,100vw)] z-50 flex flex-col p-6 sm:p-7"
               style={{
                 background: "var(--bg)",
                 borderLeft: "1px solid var(--border)",
                 boxShadow: "-20px 0 60px rgba(43, 43, 43, 0.15)",
               }}
+              id="mobile-menu-drawer"
             >
-              <div className="flex justify-between items-center mb-10">
+              <div className="flex justify-between items-center mb-8">
                 <span
                   className="font-semibold text-base"
                   style={{ color: "var(--text)" }}
@@ -206,10 +214,10 @@ export default function Navbar() {
                 </span>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 rounded-lg"
-                  style={{ color: "var(--text-muted)" }}
-                  aria-label="Close mobile menu"
-                >
+                    className="p-2 rounded-lg focus-ring"
+                    style={{ color: "var(--text-muted)" }}
+                    aria-label="Close mobile menu"
+                  >
                   <X size={20} />
                 </button>
               </div>
@@ -221,7 +229,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06 }}
                     onClick={() => handleNavClick(href)}
-                    className="text-left px-4 py-3 rounded-xl text-base font-medium transition-all"
+                    className="text-left px-4 py-3 rounded-xl text-base font-medium transition-all focus-ring"
                     style={{
                       color:
                         activeSection === href.slice(1)
@@ -240,11 +248,9 @@ export default function Navbar() {
               <div className="mt-auto">
                 <a
                   href="mailto:pillyi.shankar@email.com"
-                  className="block text-center px-5 py-3 rounded-xl font-semibold text-sm"
+                  className="btn-primary w-full py-3 focus-ring"
                   style={{
-                    background:
-                      "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
-                    color: "var(--bg)",
+                    color: "var(--bg)"
                   }}
                 >
                   Hire Me

@@ -63,10 +63,10 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg)" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="content-container">
         <ScrollReveal direction="up">
           <SectionHeader
             eyebrow="Technical Skills"
@@ -76,7 +76,7 @@ export default function Skills() {
           />
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
           {categories.map((cat, catIdx) => (
             <ScrollReveal
               key={cat.title}
@@ -84,10 +84,9 @@ export default function Skills() {
               direction={catIdx % 2 === 0 ? "left" : "right"}
             >
               <div
-                className="rounded-2xl p-6 h-full"
+                className="surface-card p-5 sm:p-6 h-full"
                 style={{
                   background: "var(--bg-secondary)",
-                  border: "1px solid var(--border)",
                 }}
               >
                 {/* Category header */}
@@ -126,7 +125,7 @@ export default function Skills() {
                         background: "rgba(176, 137, 104, 0.15)",
                         borderColor: "rgba(176, 137, 104, 0.5)",
                       }}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium cursor-default"
+                      className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium cursor-default"
                       style={{
                         background: "var(--bg-tertiary)",
                         color: "var(--text)",
@@ -147,10 +146,9 @@ export default function Skills() {
         {/* Bottom languages bar */}
         <ScrollReveal delay={0.5} direction="up" className="mt-10">
           <div
-            className="flex flex-wrap items-center justify-center gap-6 py-6 px-8 rounded-2xl"
+            className="surface-card flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-5 sm:py-6 px-4 sm:px-8"
             style={{
               background: "var(--bg-secondary)",
-              border: "1px solid var(--border)",
             }}
           >
             <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--text-subtle)" }}>

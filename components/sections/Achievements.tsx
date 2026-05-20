@@ -41,10 +41,10 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg-secondary)" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="content-container">
         <ScrollReveal direction="up">
           <SectionHeader
             eyebrow="Achievements"
@@ -107,11 +107,11 @@ export default function Achievements() {
 
                   {/* Title */}
                   <h3
-                    className="text-xl font-bold mb-1"
-                    style={{
-                      color: "var(--text)",
-                      fontFamily: "'Playfair Display', serif",
-                    }}
+                     className="text-xl font-bold mb-1 text-balance"
+                     style={{
+                       color: "var(--text)",
+                       fontFamily: "var(--font-serif)",
+                     }}
                   >
                     {achievement.title}
                   </h3>
@@ -155,7 +155,7 @@ export default function Achievements() {
         {/* Bottom metric strip */}
         <ScrollReveal delay={0.4} direction="up" className="mt-12">
           <div
-            className="grid grid-cols-3 gap-6 p-8 rounded-2xl max-w-2xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 p-6 sm:p-8 rounded-2xl max-w-2xl mx-auto"
             style={{
               background: "var(--bg)",
               border: "1px solid var(--border)",
@@ -168,11 +168,11 @@ export default function Achievements() {
             ].map(({ value, label }) => (
               <div key={label} className="text-center">
                 <div
-                  className="text-3xl font-bold mb-1"
-                  style={{
-                    color: "var(--accent)",
-                    fontFamily: "'Playfair Display', serif",
-                  }}
+                   className="text-3xl font-bold mb-1"
+                   style={{
+                     color: "var(--accent)",
+                     fontFamily: "var(--font-serif)",
+                   }}
                 >
                   {value}
                 </div>

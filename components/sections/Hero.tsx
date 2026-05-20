@@ -20,24 +20,24 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden section-shell"
       style={{ background: "var(--bg)" }}
     >
       {/* Background blobs */}
       <motion.div
-        className="absolute top-20 right-10 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-20 right-10 w-72 md:w-96 h-72 md:h-96 rounded-full blur-3xl pointer-events-none"
         style={{ background: "rgba(176, 137, 104, 0.12)" }}
         animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-32 left-10 w-72 h-72 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-32 left-10 w-56 md:w-72 h-56 md:h-72 rounded-full blur-3xl pointer-events-none"
         style={{ background: "rgba(176, 137, 104, 0.08)" }}
         animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] md:w-[600px] h-[420px] md:h-[600px] rounded-full blur-3xl pointer-events-none"
         style={{ background: "rgba(232, 223, 209, 0.5)" }}
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -45,33 +45,33 @@ export default function Hero() {
 
       {/* Floating geometric shapes */}
       <motion.div
-        className="absolute top-32 left-20 w-4 h-4 rounded-sm opacity-30 pointer-events-none"
+        className="hidden md:block absolute top-32 left-20 w-4 h-4 rounded-sm opacity-30 pointer-events-none"
         style={{ background: "var(--accent)", rotate: 45 }}
         animate={{ y: [0, -20, 0], rotate: [45, 90, 45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-48 right-32 w-3 h-3 rounded-full opacity-40 pointer-events-none"
+        className="hidden md:block absolute top-48 right-32 w-3 h-3 rounded-full opacity-40 pointer-events-none"
         style={{ background: "var(--accent)" }}
         animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
       <motion.div
-        className="absolute bottom-48 right-20 w-5 h-5 rounded-sm opacity-20 pointer-events-none"
+        className="hidden md:block absolute bottom-48 right-20 w-5 h-5 rounded-sm opacity-20 pointer-events-none"
         style={{ background: "var(--accent-dark)", rotate: 15 }}
         animate={{ y: [0, -25, 0], rotate: [15, 60, 15] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
       />
       <motion.div
-        className="absolute bottom-64 left-32 w-2 h-2 rounded-full opacity-50 pointer-events-none"
+        className="hidden md:block absolute bottom-64 left-32 w-2 h-2 rounded-full opacity-50 pointer-events-none"
         style={{ background: "var(--accent)" }}
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto w-full pt-28 pb-20">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16">
+      <div className="relative z-10 content-container w-full pt-28 pb-20">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-14 xl:gap-16">
           {/* Left: Text */}
           <div className="flex-1 text-center lg:text-left">
             {/* Eyebrow */}
@@ -101,11 +101,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-4"
-              style={{
-                color: "var(--text)",
-                fontFamily: "'Playfair Display', Georgia, serif",
-              }}
+               className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-4 text-balance"
+               style={{
+                 color: "var(--text)",
+                 fontFamily: "var(--font-serif)",
+               }}
             >
               Pillyi{" "}
               <span
@@ -129,7 +129,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                  className="text-2xl sm:text-3xl font-medium"
+                 className="text-xl sm:text-3xl font-medium"
                   style={{
                     color: word === "&" ? "var(--accent)" : "var(--text-muted)",
                   }}
@@ -144,7 +144,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.9 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
+               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-8"
               style={{
                 background: "var(--bg-secondary)",
                 color: "var(--text-muted)",
@@ -163,7 +163,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0"
+               className="text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
               style={{ color: "var(--text-muted)" }}
             >
               Building modern, scalable web applications with clean UI/UX and robust backend systems. Passionate about crafting elegant digital experiences.
@@ -180,7 +180,7 @@ export default function Hero() {
                 onClick={() =>
                   document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all"
+               className="btn-primary px-7 py-3.5 focus-ring"
                 style={{
                   background:
                     "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
@@ -200,11 +200,11 @@ export default function Hero() {
 
               <motion.a
                 href="mailto:pillyi.shankar@email.com"
-                className="flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all"
+                 className="btn-secondary px-7 py-3.5 focus-ring"
                 style={{
                   background: "transparent",
                   color: "var(--text)",
-                  border: "1.5px solid var(--border)",
+                   border: "1.5px solid var(--border)",
                 }}
                 whileHover={{
                   scale: 1.04,
@@ -234,7 +234,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-11 h-11 rounded-xl flex items-center justify-center transition-all"
+                   className="w-11 h-11 rounded-xl flex items-center justify-center transition-all focus-ring"
                   style={{
                     background: "var(--bg-secondary)",
                     color: "var(--text-muted)",
@@ -262,11 +262,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: 60, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="flex-shrink-0 relative"
+             className="flex-shrink-0 relative w-full max-w-[20rem] sm:max-w-[22rem]"
           >
             {/* Main card */}
             <div
-              className="relative w-72 rounded-3xl overflow-hidden"
+               className="relative w-full rounded-3xl overflow-hidden"
               style={{
                 background: "var(--bg-secondary)",
                 border: "1px solid var(--border)",
@@ -289,7 +289,7 @@ export default function Hero() {
                       "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
                     color: "var(--bg)",
                     boxShadow: "0 20px 60px rgba(176, 137, 104, 0.4)",
-                    fontFamily: "'Playfair Display', serif",
+                     fontFamily: "var(--font-serif)",
                   }}
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -313,7 +313,7 @@ export default function Hero() {
                   className="font-bold text-xl mb-1"
                   style={{
                     color: "var(--text)",
-                    fontFamily: "'Playfair Display', serif",
+                     fontFamily: "var(--font-serif)",
                   }}
                 >
                   Pillyi G Shankar
@@ -352,7 +352,7 @@ export default function Hero() {
 
             {/* Floating badges */}
             <motion.div
-              className="absolute -top-4 -right-6 px-3 py-2 rounded-xl text-xs font-semibold"
+             className="absolute -top-4 -right-2 sm:-right-6 px-3 py-2 rounded-xl text-xs font-semibold"
               style={{
                 background: "var(--bg)",
                 border: "1px solid var(--border)",
@@ -365,7 +365,7 @@ export default function Hero() {
               ⚡ React.js Expert
             </motion.div>
             <motion.div
-              className="absolute -bottom-4 -left-6 px-3 py-2 rounded-xl text-xs font-semibold"
+             className="absolute -bottom-4 -left-2 sm:-left-6 px-3 py-2 rounded-xl text-xs font-semibold"
               style={{
                 background: "var(--bg)",
                 border: "1px solid var(--border)",
