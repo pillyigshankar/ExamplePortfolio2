@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -89,6 +89,18 @@ function ProjectModal({
   project: Project;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onEsc);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onEsc);
+    };
+  }, [onClose]);
+
   return (
     <AnimatePresence>
       <motion.div
@@ -96,6 +108,9 @@ function ProjectModal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${project.title} project details`}
       >
         {/* Backdrop */}
         <motion.div
@@ -127,7 +142,7 @@ function ProjectModal({
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 w-9 h-9 rounded-xl flex items-center justify-center"
+              className="absolute top-4 right-4 w-9 h-9 rounded-xl flex items-center justify-center focus-ring"
               style={{
                 background: "rgba(245, 239, 230, 0.2)",
                 color: "var(--bg)",
@@ -139,7 +154,7 @@ function ProjectModal({
             <div className="text-5xl mb-3">{project.emoji}</div>
             <h3
               className="text-2xl font-bold mb-1"
-              style={{ color: "var(--bg)", fontFamily: "'Playfair Display', serif" }}
+              style={{ color: "var(--bg)", fontFamily: "var(--font-serif)" }}
             >
               {project.title}
             </h3>
@@ -223,10 +238,10 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg-secondary)" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="content-container">
         <ScrollReveal direction="up">
           <SectionHeader
             eyebrow="Featured Projects"
@@ -236,11 +251,11 @@ export default function Projects() {
         </ScrollReveal>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
           {/* Featured large card */}
           <ScrollReveal delay={0.1} direction="up" className="lg:col-span-2">
             <motion.div
-              className="relative rounded-3xl overflow-hidden cursor-pointer h-full min-h-[420px] group"
+               className="relative rounded-3xl overflow-hidden cursor-pointer h-full min-h-[360px] sm:min-h-[420px] group"
               style={{
                 background: projects[0].gradient,
                 boxShadow: "var(--shadow-lg)",
@@ -277,11 +292,11 @@ export default function Projects() {
                     </span>
                   </div>
                   <h3
-                    className="text-3xl font-bold mb-2"
-                    style={{
-                      color: "var(--bg)",
-                      fontFamily: "'Playfair Display', serif",
-                    }}
+                     className="text-2xl sm:text-3xl font-bold mb-2"
+                     style={{
+                       color: "var(--bg)",
+                       fontFamily: "var(--font-serif)",
+                     }}
                   >
                     {projects[0].title}
                   </h3>
@@ -315,11 +330,11 @@ export default function Projects() {
           </ScrollReveal>
 
           {/* Two stacked smaller cards */}
-          <div className="flex flex-col gap-6">
+           <div className="flex flex-col gap-5 md:gap-6">
             {projects.slice(1).map((project, i) => (
               <ScrollReveal key={project.id} delay={0.2 + i * 0.1} direction="right">
                 <motion.div
-                  className="relative rounded-3xl overflow-hidden cursor-pointer flex-1 min-h-[190px] group"
+                   className="relative rounded-3xl overflow-hidden cursor-pointer flex-1 min-h-[220px] sm:min-h-[190px] group"
                   style={{
                     background: project.gradient,
                     boxShadow: "var(--shadow-md)",
@@ -342,11 +357,11 @@ export default function Projects() {
                         />
                       </div>
                       <h3
-                        className="text-lg font-bold mb-1"
-                        style={{
-                          color: "var(--bg)",
-                          fontFamily: "'Playfair Display', serif",
-                        }}
+                         className="text-lg font-bold mb-1"
+                         style={{
+                           color: "var(--bg)",
+                           fontFamily: "var(--font-serif)",
+                         }}
                       >
                         {project.title}
                       </h3>
@@ -372,11 +387,10 @@ export default function Projects() {
             href="https://github.com/pillyi-gshankar"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm"
+            className="btn-secondary px-7 py-3.5 focus-ring"
             style={{
-              background: "var(--bg-tertiary)",
               color: "var(--text)",
-              border: "1px solid var(--border)",
+              background: "var(--bg-tertiary)",
             }}
             whileHover={{
               scale: 1.04,

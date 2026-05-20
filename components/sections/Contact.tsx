@@ -72,10 +72,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg)" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="content-container">
         <ScrollReveal direction="up">
           <SectionHeader
             eyebrow="Get In Touch"
@@ -84,7 +84,7 @@ export default function Contact() {
           />
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
           {/* Left: Contact info */}
           <div>
             <ScrollReveal delay={0.1} direction="left">
@@ -106,7 +106,7 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-2xl transition-all group"
+                     className="flex items-center gap-4 p-4 rounded-2xl transition-all group focus-ring"
                     style={{
                       background: "var(--bg-secondary)",
                       border: "1px solid var(--border)",
@@ -176,8 +176,8 @@ export default function Contact() {
 
           {/* Right: Form */}
           <ScrollReveal delay={0.2} direction="right">
-            <div
-              className="rounded-3xl p-8 relative overflow-hidden"
+             <div
+               className="rounded-3xl p-5 sm:p-8 relative overflow-hidden"
               style={{
                 background: "var(--bg-secondary)",
                 border: "1px solid var(--border)",
@@ -207,11 +207,11 @@ export default function Contact() {
                       <CheckCircle size={56} style={{ color: "var(--accent)" }} />
                     </motion.div>
                     <h3
-                      className="text-xl font-bold mt-4 mb-2"
-                      style={{
-                        color: "var(--text)",
-                        fontFamily: "'Playfair Display', serif",
-                      }}
+                         className="text-xl font-bold mt-4 mb-2"
+                         style={{
+                           color: "var(--text)",
+                           fontFamily: "var(--font-serif)",
+                         }}
                     >
                       Message Sent!
                     </h3>
@@ -227,7 +227,7 @@ export default function Contact() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
-                    <div className="grid grid-cols-2 gap-4">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label
                           className="block text-xs font-semibold uppercase tracking-wider mb-2"
@@ -246,9 +246,10 @@ export default function Contact() {
                           }
                           onFocus={() => setFocused("name")}
                           onBlur={() => setFocused(null)}
-                          required
-                          style={inputStyle("name")}
-                        />
+                           required
+                           className="focus-ring"
+                           style={inputStyle("name")}
+                         />
                       </div>
                       <div>
                         <label
@@ -268,9 +269,10 @@ export default function Contact() {
                           }
                           onFocus={() => setFocused("email")}
                           onBlur={() => setFocused(null)}
-                          required
-                          style={inputStyle("email")}
-                        />
+                           required
+                           className="focus-ring"
+                           style={inputStyle("email")}
+                         />
                       </div>
                     </div>
 
@@ -292,9 +294,10 @@ export default function Contact() {
                         }
                         onFocus={() => setFocused("subject")}
                         onBlur={() => setFocused(null)}
-                        required
-                        style={inputStyle("subject")}
-                      />
+                         required
+                         className="focus-ring"
+                         style={inputStyle("subject")}
+                       />
                     </div>
 
                     <div>
@@ -316,6 +319,7 @@ export default function Contact() {
                         onFocus={() => setFocused("message")}
                         onBlur={() => setFocused(null)}
                         required
+                        className="focus-ring"
                         style={{
                           ...inputStyle("message"),
                           resize: "none",
@@ -325,13 +329,10 @@ export default function Contact() {
 
                     <motion.button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
-                        color: "var(--bg)",
-                        boxShadow: "var(--shadow-accent)",
-                      }}
+                       className="btn-primary w-full py-3.5 focus-ring"
+                       style={{
+                         color: "var(--bg)",
+                       }}
                       whileHover={{
                         scale: 1.02,
                         boxShadow: "0 12px 40px rgba(176, 137, 104, 0.45)",

@@ -23,7 +23,7 @@ function StatCard({ value, label, delay = 0 }: StatCardProps) {
       >
         <div
           className="text-3xl font-bold mb-1"
-          style={{ color: "var(--accent)", fontFamily: "'Playfair Display', serif" }}
+          style={{ color: "var(--accent)", fontFamily: "var(--font-serif)" }}
         >
           {value}
         </div>
@@ -46,11 +46,11 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg-secondary)" }}
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="content-container">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
           {/* Left */}
           <div>
             <ScrollReveal direction="left">
@@ -62,7 +62,7 @@ export default function About() {
 
             <ScrollReveal delay={0.15} direction="left">
               <p
-                className="text-base leading-relaxed mb-6"
+                 className="text-base md:text-[1.03rem] leading-relaxed mb-6"
                 style={{ color: "var(--text-muted)" }}
               >
                 Computer Science Engineering student experienced in frontend and
@@ -76,7 +76,7 @@ export default function About() {
 
             <ScrollReveal delay={0.25} direction="left">
               <p
-                className="text-base leading-relaxed mb-8"
+                 className="text-base md:text-[1.03rem] leading-relaxed mb-8"
                 style={{ color: "var(--text-muted)" }}
               >
                 Passionate about building modern responsive applications with clean
@@ -87,11 +87,11 @@ export default function About() {
 
             {/* Highlight pills */}
             <ScrollReveal delay={0.35} direction="left">
-              <div className="flex flex-wrap gap-3 mb-10">
+               <div className="flex flex-wrap gap-3 mb-10">
                 {highlights.map(({ icon: Icon, label }) => (
                   <motion.div
                     key={label}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium"
+                    className="pill-chip"
                     style={{
                       background: "var(--bg-tertiary)",
                       color: "var(--text)",
@@ -138,18 +138,18 @@ export default function About() {
           {/* Right */}
           <div className="space-y-6">
             {/* Stats grid */}
-            <div className="grid grid-cols-3 gap-4">
+             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <StatCard value="3+" label="Projects" delay={0.1} />
               <StatCard value="15+" label="Technologies" delay={0.2} />
               <StatCard value="2" label="Certifications" delay={0.3} />
             </div>
 
             {/* Expertise cards */}
-            <div className="grid grid-cols-2 gap-4">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {highlights.map(({ icon: Icon, label, desc }, i) => (
                 <ScrollReveal key={label} delay={0.2 + i * 0.1} direction="right">
                   <motion.div
-                    className="premium-card p-5"
+                     className="premium-card p-5"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div
@@ -175,12 +175,12 @@ export default function About() {
             {/* Quote */}
             <ScrollReveal delay={0.5} direction="right">
               <div
-                className="p-6 rounded-2xl italic text-base leading-relaxed"
+                 className="p-6 rounded-2xl italic text-base leading-relaxed text-balance"
                 style={{
                   background: "rgba(176, 137, 104, 0.06)",
                   border: "1px solid rgba(176, 137, 104, 0.2)",
                   color: "var(--text-muted)",
-                  fontFamily: "'Playfair Display', serif",
+                   fontFamily: "var(--font-serif)",
                 }}
               >
                 &ldquo;I believe great software is born at the intersection of clean code, elegant design, and user empathy.&rdquo;

@@ -106,10 +106,10 @@ export default function Journey() {
   return (
     <section
       id="journey"
-      className="section-padding px-6"
+      className="section-padding section-shell"
       style={{ background: "var(--bg)" }}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="content-container max-w-4xl">
         <ScrollReveal direction="up">
           <SectionHeader
             eyebrow="My Journey"
@@ -132,18 +132,18 @@ export default function Journey() {
           />
 
           <div className="space-y-8">
-            {timelineItems.map((item, i) => {
-              const isLeft = i % 2 === 0;
-              return (
+             {timelineItems.map((item, i) => {
+               const isLeft = i % 2 === 0;
+               return (
                 <ScrollReveal
                   key={i}
                   delay={i * 0.06}
                   direction={isLeft ? "left" : "right"}
                 >
                   <div
-                    className={`relative flex items-start gap-6 md:gap-0 ${
-                      isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
+                       className={`relative flex items-start gap-5 md:gap-0 ${
+                         isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                       }`}
                   >
                     {/* Content card */}
                     <div
@@ -164,8 +164,8 @@ export default function Journey() {
                             >
                               {item.year}
                             </span>
-                            <h3
-                              className="font-bold text-base mt-1"
+                           <h3
+                             className="font-bold text-base mt-1 text-balance"
                               style={{ color: "var(--text)" }}
                             >
                               {item.title}

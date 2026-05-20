@@ -12,14 +12,14 @@ const socials = [
 export default function Footer() {
   return (
     <footer
-      className="py-12 px-6 border-t"
+      className="py-10 md:py-12 section-shell border-t"
       style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
+      <div className="content-container flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="space-y-1">
           <div
             className="font-bold text-lg mb-1"
-            style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}
+            style={{ color: "var(--text)", fontFamily: "var(--font-serif)" }}
           >
             Pillyi G Shankar
           </div>
@@ -36,7 +36,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all"
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all focus-ring"
               style={{
                 background: "var(--bg-tertiary)",
                 color: "var(--text-muted)",

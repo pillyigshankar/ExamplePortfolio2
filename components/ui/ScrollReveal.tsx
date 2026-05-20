@@ -23,12 +23,15 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-80px" });
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const initialMap = {
-    up: { opacity: 0, y: 40 },
-    down: { opacity: 0, y: -40 },
-    left: { opacity: 0, x: 60 },
-    right: { opacity: 0, x: -60 },
+    up: { opacity: 0, y: 28 },
+    down: { opacity: 0, y: -28 },
+    left: { opacity: 0, x: 34 },
+    right: { opacity: 0, x: -34 },
     none: { opacity: 0 },
   };
 
@@ -46,8 +49,8 @@ export default function ScrollReveal({
       initial={initialMap[direction]}
       animate={isInView ? animateMap[direction] : initialMap[direction]}
       transition={{
-        duration,
-        delay,
+        duration: reduceMotion ? 0.01 : duration,
+        delay: reduceMotion ? 0 : delay,
         ease: [0.23, 1, 0.32, 1],
       }}
       className={cn(className)}
