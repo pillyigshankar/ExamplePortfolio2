@@ -183,7 +183,7 @@ export default function About() {
                   fontFamily: "'Playfair Display', serif",
                 }}
               >
-                "I believe great software is born at the intersection of clean code, elegant design, and user empathy."
+                &ldquo;I believe great software is born at the intersection of clean code, elegant design, and user empathy.&rdquo;
                 <div
                   className="mt-3 text-sm not-italic font-medium"
                   style={{ color: "var(--accent)" }}
